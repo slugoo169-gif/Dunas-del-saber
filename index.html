@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<!--
+  DUNAS DEL SABER · Guía rápida de edición
+  Todos los textos e imágenes se cambian en un solo lugar:
+  busca «CONTENIDO EDITABLE» dentro del <script>, al final de este archivo.
+  · Textos: escríbelos entre comillas simples, por ejemplo nombre:'Ana Pérez'.
+  · Campos vacíos (''): la página muestra un espacio gris por completar.
+  · Imágenes: en «foto» o «imagen» escribe la ruta del archivo, por ejemplo
+    'imagenes/ana.jpg' (sube la carpeta «imagenes» junto a este archivo).
+  El resto del código (diseño y actividades) no necesita cambios.
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dunas del Saber · Proyecto escolar La Guajira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF7EA; --surface:#FFFDF8; --surface-2:#F5E7CF; --sand:#E9D3AE; --ink:#33210F; --muted:#6E5238; --line:rgba(51,33,15,.15);
+  --terracota:#B84B24; --gold:#D99A1E; --cactus:#4F6F2C; --turq:#13838A; --nav-bg:rgba(255,247,234,.88); --grain:rgba(140,90,40,.07);
+  --sky1:#FCE6A8; --sky2:#F7B567; --sky3:#EE8A5A; --sun:#FFE9A6; --sun-glow:rgba(255,212,110,.6);
+  --dune1:#D99A6C; --dune2:#E8B985; --dune3:#F1D2A2; --dune4:#F8E5C4; --sea:#1E9EA2; --sea2:#9BE0DA; --cac:#4F6F2C;
+  --hero-ink:#2A170A; --hero-muted:#5B381E; --on-accent:#FFFFFF; --ok:#2E7A39; --bad:#B23A2A; --ok-bg:#E5F2DF; --bad-bg:#F8E0DA;
+  --shadow:0 18px 40px -22px rgba(110,60,20,.45);
+  color-scheme:light;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#1C1510; --surface:#261C15; --surface-2:#33261C; --sand:#4A3828; --ink:#F7EAD5; --muted:#CDB596; --line:rgba(247,234,213,.14);
+    --terracota:#EE8A62; --gold:#EDB64B; --cactus:#9DC46A; --turq:#5CC9CF; --nav-bg:rgba(28,21,16,.88); --grain:rgba(255,230,190,.04);
+    --sky1:#1A1C3A; --sky2:#4B2D55; --sky3:#B4564A; --sun:#F6C46A; --sun-glow:rgba(246,170,90,.4);
+    --dune1:#6A4634; --dune2:#7C5640; --dune3:#8E684B; --dune4:#5B4331; --sea:#176A73; --sea2:#5FB6B5; --cac:#3B5524;
+    --hero-ink:#FFF3E0; --hero-muted:#F0CFA6; --on-accent:#1C1510; --ok:#8FD08A; --bad:#F29684; --ok-bg:#20361F; --bad-bg:#3E211B;
+    --shadow:0 18px 40px -22px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1C1510; --surface:#261C15; --surface-2:#33261C; --sand:#4A3828; --ink:#F7EAD5; --muted:#CDB596; --line:rgba(247,234,213,.14);
+  --terracota:#EE8A62; --gold:#EDB64B; --cactus:#9DC46A; --turq:#5CC9CF; --nav-bg:rgba(28,21,16,.88); --grain:rgba(255,230,190,.04);
+  --sky1:#1A1C3A; --sky2:#4B2D55; --sky3:#B4564A; --sun:#F6C46A; --sun-glow:rgba(246,170,90,.4);
+  --dune1:#6A4634; --dune2:#7C5640; --dune3:#8E684B; --dune4:#5B4331; --sea:#176A73; --sea2:#5FB6B5; --cac:#3B5524;
+  --hero-ink:#FFF3E0; --hero-muted:#F0CFA6; --on-accent:#1C1510; --ok:#8FD08A; --bad:#F29684; --ok-bg:#20361F; --bad-bg:#3E211B;
+  --shadow:0 18px 40px -22px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(84px + env(safe-area-inset-top,0px));-webkit-text-size-adjust:100%}
+body{margin:0;font-family:'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;font-size:1.0625rem;line-height:1.6;color:var(--ink);background:var(--bg);background-image:radial-gradient(var(--grain) 1px,transparent 1.4px);background-size:7px 7px;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+h1,h2,h3,h4{line-height:1.08;margin:0 0 .45em;font-weight:800;letter-spacing:-.02em;font-stretch:88%}
+h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
+h3{font-size:1.3rem;letter-spacing:-.01em}
+p{margin:0 0 1em}
+a{color:inherit}
+img,svg{max-width:100%}
+:focus-visible{outline:3px solid var(--turq);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Banda wayuu */
+.band{height:14px;background-repeat:repeat-x;background-size:42px 14px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='14' viewBox='0 0 42 14'%3E%3Cpath d='M0 7 7 0 14 7 7 14Z' fill='%23B84B24'/%3E%3Cpath d='M14 7 21 0 28 7 21 14Z' fill='%23D99A1E'/%3E%3Cpath d='M28 7 35 0 42 7 35 14Z' fill='%2313838A'/%3E%3Cpath d='M4 7 7 4 10 7 7 10Z' fill='%23FFF7EA'/%3E%3Cpath d='M18 7 21 4 24 7 21 10Z' fill='%2333210F'/%3E%3Cpath d='M32 7 35 4 38 7 35 10Z' fill='%23FFF7EA'/%3E%3C/svg%3E")}
+
+/* Navegación */
+.top{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1280px;margin:0 auto;height:64px;display:flex;align-items:center;gap:12px;padding:0 18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.brand svg{flex:none}
+.navmenu{display:flex;align-items:center;gap:6px;margin-left:auto}
+.navlinks{display:flex;gap:1px;list-style:none;margin:0;padding:0}
+.navlinks a{display:block;padding:7px 11px;border-radius:999px;text-decoration:none;font-weight:500;font-size:.95rem;transition:background .2s}
+.navlinks a:hover{background:var(--surface-2)}
+.navlinks a[aria-current="page"]{background:var(--ink);color:var(--bg)}
+.search{position:relative;margin-left:6px}
+.search input{width:170px;padding:8px 12px 8px 34px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:.93rem}
+.search input::placeholder{color:var(--muted)}
+.search .s-ic{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;display:flex}
+.results{position:absolute;right:0;top:calc(100% + 8px);width:min(390px,92vw);background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:6px;max-height:62vh;overflow:auto}
+.results a{display:block;padding:9px 12px;border-radius:9px;text-decoration:none}
+.results a:hover,.results a:focus{background:var(--surface-2);outline:none}
+.results b{display:block;font-weight:600}
+.results small{display:block;color:var(--muted);font-size:.82rem;line-height:1.4}
+.results .empty{padding:10px 12px;color:var(--muted);font-size:.92rem;margin:0}
+.burger{display:none;margin-left:auto;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);place-items:center;cursor:pointer}
+@media (max-width:1120px){
+  .burger{display:grid}
+  .navmenu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 18px 20px;max-height:calc(100vh - 64px - env(safe-area-inset-top,0px));overflow:auto;box-shadow:var(--shadow)}
+  .top.open .navmenu{display:flex}
+  .navlinks{flex-direction:column;gap:2px}
+  .navlinks a{padding:11px 14px;font-size:1.02rem}
+  .search{margin:12px 0 0}
+  .search input{width:100%;padding:11px 14px 11px 36px}
+  .results{position:static;width:100%;margin-top:8px;box-shadow:none}
+}
+main{padding-top:64px}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;border:0;background:var(--accent,var(--terracota));color:var(--on-accent);font:inherit;font-weight:600;font-size:.98rem;text-decoration:none;cursor:pointer;transition:transform .15s,filter .15s}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid currentColor}
+.btn.small{padding:8px 14px;font-size:.9rem}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* Portada */
+.hero{position:relative;min-height:min(92vh,860px);display:flex;align-items:flex-start;overflow:hidden;color:var(--hero-ink)}
+.hero-art{position:absolute;inset:0;width:100%;height:100%}
+.hero-content{position:relative;z-index:2;padding-top:clamp(48px,11vh,120px);padding-bottom:40px;max-width:680px}
+.hero .place{font-weight:600;color:var(--hero-muted);margin-bottom:.8em;font-size:1rem}
+.hero h1{font-size:clamp(3.2rem,10vw,7.2rem);font-stretch:78%;letter-spacing:-.045em;line-height:.9;margin-bottom:.25em}
+.hero .phrase{font-size:clamp(1.15rem,2.2vw,1.45rem);max-width:30ch;font-weight:500}
+.hero .btn{--accent:var(--hero-ink);color:var(--sky1)}
+.hero .btn.ghost{color:var(--hero-ink);background:transparent}
+.sun{transform-box:fill-box;transform-origin:center}
+@keyframes rise{from{transform:translateY(120px)}to{transform:none}}
+@keyframes slideIn{from{transform:translateX(var(--dx,60px));opacity:.0}to{transform:none;opacity:1}}
+.sun-g{animation:rise 2.2s cubic-bezier(.2,.7,.2,1) both}
+.dune-a{animation:slideIn 1.6s .2s cubic-bezier(.2,.7,.2,1) both;--dx:-80px}
+.dune-b{animation:slideIn 1.6s .35s cubic-bezier(.2,.7,.2,1) both;--dx:90px}
+.dune-c{animation:slideIn 1.6s .5s cubic-bezier(.2,.7,.2,1) both;--dx:-60px}
+.hero-content>*{animation:slideIn 1s cubic-bezier(.2,.7,.2,1) both;--dx:0px}
+.hero-content>*:nth-child(2){animation-delay:.15s}.hero-content>*:nth-child(3){animation-delay:.3s}.hero-content>*:nth-child(4){animation-delay:.45s}
+
+/* Secciones */
+.sec{padding:clamp(64px,9vw,112px) 0}
+.sec-head{max-width:720px;margin-bottom:40px}
+.sec-head p{color:var(--muted);font-size:1.12rem}
+.intro>*{max-width:760px}
+.intro .big{font-size:clamp(1.25rem,2.3vw,1.6rem);line-height:1.45;font-weight:500;letter-spacing:-.01em;margin:0}
+.ph{color:var(--muted);font-style:italic;font-weight:400;opacity:.85}
+footer .ph{color:inherit;opacity:.6}
+
+/* Tarjetas editables: imagen + título + descripción */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.ecard{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.ecard .pic{aspect-ratio:16/10;background:var(--surface-2);overflow:hidden}
+.ecard .pic img{width:100%;height:100%;object-fit:cover;display:block}
+.ecard .pic.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted);font-size:.9rem;border-bottom:2px dashed var(--line)}
+.ecard .txt{padding:16px 18px 20px}
+.ecard h3{margin-bottom:.3em}
+.ecard p{margin:0;color:var(--muted)}
+
+/* Integrantes */
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.member{position:relative;background:var(--surface);border-radius:22px;overflow:hidden;border:1px solid var(--line);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+.member:hover{transform:translateY(-6px) rotate(-.4deg);box-shadow:var(--shadow)}
+.member .m-top{height:96px;background:var(--mc);position:relative}
+.avatar{width:96px;height:96px;border-radius:50%;margin:-52px auto 0;position:relative;display:block;border:5px solid var(--surface);background:var(--surface-2);overflow:hidden}
+.avatar img,.avatar svg{width:100%;height:100%;object-fit:cover;display:block}
+.member .m-body{padding:14px 20px 24px;text-align:center}
+.member h3{margin-bottom:.15em}
+.member .role{display:inline-block;font-size:.85rem;font-weight:600;color:var(--mc);margin-bottom:.7em}
+.member p{color:var(--muted);font-size:.96rem;margin:0}
+@media (max-width:980px){.team{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.team{grid-template-columns:1fr}}
+
+/* Materias (mosaico) */
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(190px,auto);gap:16px}
+.tile{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;border-radius:20px;text-decoration:none;color:#FFFFFF;background:var(--accent);overflow:hidden;isolation:isolate;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.tile:hover{transform:translateY(-4px)}
+.tile .t-ico{position:absolute;right:-14px;top:-14px;opacity:.22;z-index:-1;transition:transform .5s}
+.tile:hover .t-ico{transform:rotate(-8deg) scale(1.06)}
+.tile h3{font-size:1.65rem;margin-bottom:.2em}
+.tile p{margin:0;font-size:.97rem;opacity:.92;max-width:34ch}
+.tile.lg{grid-column:span 2;grid-row:span 2}
+.tile.lg h3{font-size:2.4rem}
+.tile.wide{grid-column:span 2}
+@media (max-width:900px){.mosaic{grid-template-columns:repeat(2,1fr)}.tile.lg{grid-row:span 1}}
+@media (max-width:520px){.mosaic{grid-template-columns:1fr}.tile.lg,.tile.wide{grid-column:auto}}
+
+/* Datos */
+
+/* Pie */
+footer{background:var(--ink);color:var(--bg);padding:48px 0 36px}
+footer .f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+footer h4{font-size:1.05rem;margin-bottom:.7em}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+footer a{text-decoration:none;opacity:.85}
+footer a:hover{opacity:1;text-decoration:underline}
+footer .small{opacity:.7;font-size:.9rem;margin-top:28px}
+@media (max-width:760px){footer .f-grid{grid-template-columns:1fr}}
+
+/* Página de materia */
+.subject{--accent:var(--acc-l)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .subject{--accent:var(--acc-d)}}
+:root[data-theme="dark"] .subject{--accent:var(--acc-d)}
+.s-hero{position:relative;overflow:hidden;background:color-mix(in srgb,var(--accent) 16%,var(--bg));padding:44px 0 110px}
+.s-hero .back{display:inline-block;margin-bottom:24px;font-weight:600;text-decoration:none;padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface)}
+.s-hero .back:hover{border-color:var(--accent)}
+.s-hero h1{font-size:clamp(3rem,9vw,6rem);font-stretch:78%;letter-spacing:-.045em;color:var(--accent);margin-bottom:.15em}
+.s-hero .tag{font-weight:600;font-size:1.15rem;margin-bottom:.6em}
+.s-hero .lead{max-width:62ch;font-size:1.12rem}
+.s-hero .note{font-size:.88rem;color:var(--muted);margin-top:18px}
+.s-hero .s-in{position:relative;z-index:2}
+.s-dunes{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:90px;z-index:1}
+.s-menu{position:sticky;top:calc(64px + env(safe-area-inset-top,0px));z-index:20;background:var(--nav-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:thin}
+.chip{flex:none;padding:7px 14px;border-radius:999px;border:1.5px solid var(--line);text-decoration:none;font-size:.92rem;font-weight:500;white-space:nowrap;background:var(--surface)}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.s-body{padding-top:40px}
+.topic{padding:48px 0;border-bottom:1px solid var(--line);scroll-margin-top:calc(130px + env(safe-area-inset-top,0px))}
+.topic:last-child{border-bottom:0}
+.topic>h2{font-size:clamp(1.6rem,3vw,2.2rem);color:var(--accent)}
+.wgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+.widget{min-width:0}
+.wgrid .widget{margin-top:0}
+.widget>h3{margin-bottom:.2em}
+.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.slot{margin:0;min-height:170px;border:2px dashed var(--line);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);text-align:center;padding:16px;background:var(--surface)}
+.slot svg{color:var(--accent);opacity:.8}
+.slot figcaption{font-size:.93rem;font-weight:500}
+.slot.filled{padding:0;gap:0;overflow:hidden;border-style:solid;border-width:1px;justify-content:flex-start}
+.slot.filled img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.slot.filled figcaption{padding:10px 12px;color:var(--ink)}
+.more{padding:70px 22px 80px}
+.more-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:12px;margin-top:20px}
+.more-grid a{display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:14px;text-decoration:none;font-weight:600;background:var(--surface);border:1.5px solid var(--line);transition:border-color .2s,transform .2s}
+.more-grid a:hover{border-color:var(--c);transform:translateY(-2px)}
+.more-grid svg{color:var(--c);flex:none}
+
+/* Widgets */
+.widget{margin-top:18px;padding:20px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+.widget h4{margin-bottom:.4em}
+.w-help{color:var(--muted);font-size:.94rem}
+.ctrls{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;align-items:end;margin-top:14px}
+.ctrls label{display:grid;gap:6px;font-size:.93rem;font-weight:500}
+input[type=range]{width:100%;accent-color:var(--accent)}
+select,input[type=text],input[type=number],textarea{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;width:100%}
+textarea{min-height:170px;resize:vertical;line-height:1.6}
+canvas{display:block;width:100%;border-radius:12px;background:var(--bg)}
+.readout{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.readout span{padding:8px 14px;border-radius:999px;background:color-mix(in srgb,var(--accent) 12%,var(--surface));font-weight:500;font-size:.94rem}
+.fb{padding:10px 14px;border-radius:10px;margin-top:10px;font-size:.96rem}
+.fb.ok{background:var(--ok-bg);color:var(--ok)}
+.fb.bad{background:var(--bad-bg);color:var(--bad)}
+/* Cuestionario */
+.q{padding:18px 0;border-bottom:1px dashed var(--line)}
+.q:first-child{padding-top:4px}
+.qt{font-weight:600;font-size:1.06rem;margin-bottom:10px}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;font:inherit;padding:11px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;transition:border-color .2s,background .2s}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--ok);background:var(--ok-bg);color:var(--ok);font-weight:600}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg);color:var(--bad)}
+.score{font-weight:700;font-size:1.1rem;margin:16px 0 10px}
+/* Mapa */
+.map-wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;align-items:start}
+@media (max-width:700px){.map-wrap{grid-template-columns:1fr}}
+.pin{cursor:pointer}
+.pin circle.dot{fill:var(--accent);stroke:var(--surface);stroke-width:2.5;transition:r .2s}
+.pin:hover circle.dot,.pin:focus circle.dot,.pin.on circle.dot{r:9}
+.pin text{font-size:11px;font-weight:600;fill:var(--ink);font-family:inherit}
+.pin:focus{outline:none}
+.map-info{padding:16px 18px;border-radius:14px;background:color-mix(in srgb,var(--accent) 10%,var(--bg))}
+/* Cadena */
+.pool,.chain{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.org{font:inherit;font-weight:600;padding:10px 16px;border-radius:999px;border:1.5px solid var(--accent);background:var(--bg);color:var(--ink);cursor:pointer}
+.org:disabled{opacity:.35;cursor:default}
+.link{display:flex;align-items:center;gap:10px}
+.link .box{min-width:120px;padding:10px 14px;border-radius:12px;border:2px dashed var(--line);text-align:center;font-weight:600}
+.link .box.full{border-style:solid;border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--bg))}
+.link .box small{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
+/* Tabla periódica */
+.pt-scroll{overflow-x:auto;padding-bottom:6px}
+.pt{display:grid;grid-template-columns:repeat(18,minmax(38px,1fr));gap:3px;min-width:740px}
+.el{font:inherit;border:0;border-radius:6px;padding:3px 2px;cursor:pointer;background:var(--cc);color:#24170C;text-align:center;line-height:1.1;transition:transform .15s,opacity .2s}
+.el:hover,.el:focus-visible{transform:scale(1.18);z-index:2;position:relative}
+.el .z{display:block;font-size:.58rem;opacity:.75}
+.el .sy{display:block;font-weight:700;font-size:.92rem}
+.el.dim{opacity:.18}
+.el.sel{outline:3px solid var(--ink);outline-offset:1px}
+.pt-gap{grid-column:1/-1;height:8px}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.legend button{font:inherit;font-size:.82rem;display:flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.legend button[aria-pressed="true"]{border-color:var(--ink);font-weight:600}
+.legend i{width:12px;height:12px;border-radius:3px;background:var(--cc);display:inline-block}
+.el-info{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;padding:16px;border-radius:14px;background:color-mix(in srgb,var(--accent) 10%,var(--bg))}
+.el-big{width:92px;height:92px;border-radius:14px;background:var(--cc);color:#24170C;display:grid;place-items:center;text-align:center;line-height:1}
+.el-big b{font-size:2.2rem}
+.el-big small{display:block;font-size:.8rem}
+/* Ecuaciones */
+.eq{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:1.25rem;font-weight:600;margin:14px 0}
+.eq input{width:62px;text-align:center;font-weight:700;padding:6px}
+.tally{width:100%;border-collapse:collapse;font-size:.95rem;margin-top:8px}
+.tally th,.tally td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:center}
+.tbl-scroll{overflow-x:auto}
+/* pH */
+.ph-bar{position:relative;height:28px;border-radius:999px;background:linear-gradient(90deg,#D7263D,#F46036,#F6AE2D,#C5D86D,#44AF69,#2E86AB,#3D5A80,#6A4C93);margin:30px 0 8px}
+.ph-mark{position:absolute;top:-28px;transform:translateX(-50%);transition:left .5s cubic-bezier(.2,.7,.2,1);font-weight:700;font-size:.9rem;white-space:nowrap}
+.ph-mark::after{content:"";display:block;width:3px;height:30px;background:var(--ink);margin:2px auto 0;border-radius:2px}
+.ph-scale{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted)}
+.subst{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.subst button{font:inherit;padding:8px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.subst button[aria-pressed="true"]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--bg));font-weight:600}
+/* Figuras */
+.shape-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.shape-tabs button{font:inherit;padding:8px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.shape-tabs button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.geo-svg{width:100%;max-width:440px;height:auto;display:block;margin:14px auto 0}
+/* Escritura */
+.counts{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.counts span{padding:6px 12px;border-radius:999px;background:var(--surface-2);font-size:.9rem}
+.counts b{font-weight:700}
+
+/* Revelado al desplazarse */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="top" id="top" aria-label="Principal">
+  <div class="nav-in">
+    <a class="brand" href="#/" aria-label="Dunas del Saber, ir al inicio">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="22" cy="13" r="7" fill="#D99A1E"/><path d="M0 26c6-6 12-6 17-2s11 4 17-1v11H0z" fill="#B84B24"/><path d="M0 30c7-4 14-3 20 0s10 2 14 0v4H0z" fill="#13838A"/></svg>
+      <span id="brand-name">Dunas del Saber</span>
+    </a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="navmenu" aria-label="Abrir menú">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <div class="navmenu" id="navmenu">
+      <ul class="navlinks" id="navlinks"></ul>
+      <div class="search" role="search">
+        <span class="s-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></span>
+        <label class="sr" for="q">Buscar en el sitio</label>
+        <input id="q" type="search" placeholder="Buscar temas…" autocomplete="off">
+        <div class="results" id="results" hidden></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- ======================= INICIO ======================= -->
+<div id="home">
+  <header class="hero">
+    <svg class="hero-art" viewBox="0 0 1440 820" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--sky1)"/><stop offset=".6" style="stop-color:var(--sky2)"/><stop offset="1" style="stop-color:var(--sky3)"/></linearGradient></defs>
+      <rect width="1440" height="820" fill="url(#sky)"/>
+      <circle class="sun-g" cx="1060" cy="470" r="104" style="fill:var(--sun)"/>
+      <rect x="0" y="556" width="1440" height="110" style="fill:var(--sea)"/>
+      <path class="dune-a" d="M-80 650 C 180 560 420 600 640 646 S 1020 596 1220 628 S 1420 654 1540 640 V820 H-80Z" style="fill:var(--dune2)"/>
+      <path class="dune-b" d="M-80 712 C 240 626 520 652 770 706 S 1200 660 1540 694 V820 H-80Z" style="fill:var(--dune3)"/>
+      <g transform="translate(1210 690)" style="fill:var(--cac)"><rect x="-13" y="-120" width="26" height="130" rx="13"/><rect x="-38" y="-80" width="17" height="44" rx="8.5"/><rect x="-38" y="-48" width="34" height="15" rx="7.5"/><rect x="21" y="-100" width="17" height="52" rx="8.5"/><rect x="4" y="-62" width="34" height="15" rx="7.5"/></g>
+      <path class="dune-c" d="M-80 772 C 300 708 620 734 930 776 S 1320 744 1540 756 V820 H-80Z" style="fill:var(--dune4)"/>
+    </svg>
+    <div class="wrap hero-content">
+      <p class="place" id="h-lugar">Proyecto escolar 2026, La Guajira, Colombia</p>
+      <h1 id="h-titulo">Dunas del Saber</h1>
+      <p class="phrase" id="h-frase">Donde el desierto se encuentra con el mar, empieza el conocimiento.</p>
+      <div class="row" style="margin-top:28px">
+        <a class="btn" href="#/inicio/materias">Explorar las materias</a>
+        <a class="btn ghost" href="#/inicio/integrantes">Conocer al equipo</a>
+      </div>
+    </div>
+  </header>
+  <div class="band" aria-hidden="true"></div>
+
+  <section class="sec" id="bienvenida">
+    <div class="wrap intro rv">
+      <h2 id="b-titulo">Bienvenidos</h2>
+      <p class="big" id="b-texto"></p>
+    </div>
+  </section>
+
+  <section class="sec" id="integrantes" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head rv"><h2>Integrantes</h2></div>
+      <div class="team" id="team"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="materias" style="background:var(--surface-2)">
+    <div class="wrap">
+      <div class="sec-head rv"><h2>Materias</h2><p>Elige una materia para entrar a su página.</p></div>
+      <div class="mosaic" id="mosaic"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="datos">
+    <div class="wrap">
+      <div class="sec-head rv"><h2 id="d-titulo">La Guajira</h2></div>
+      <div class="cards" id="datos-cards"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ======================= MATERIA ======================= -->
+<div id="subject" hidden></div>
+</main>
+
+<footer>
+  <div class="wrap f-grid">
+    <div>
+      <h4 id="f-titulo">Dunas del Saber</h4>
+      <p id="f-pie" style="opacity:.85;max-width:44ch"></p>
+    </div>
+    <div>
+      <h4>Integrantes</h4>
+      <ul id="f-team"></ul>
+    </div>
+    <div>
+      <h4>Materias</h4>
+      <ul id="f-links"></ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
+const fmt = (n,d=1)=>Number(n).toLocaleString('es-CO',{maximumFractionDigits:d,minimumFractionDigits:0});
+const rnd = (a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const esc = s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---------- Iconos originales ---------- */
+const IC = {
+  lenguaje:'<path d="M4 5c3-1.2 6-1.2 8 1 2-2.2 5-2.2 8-1v14c-3-1.2-6-1.2-8 1-2-2.2-5-2.2-8-1z"/><path d="M12 6v14"/><path d="M7 9h2M7 12h2M15 9h2M15 12h2"/>',
+  sociales:'<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5 13.6 13.6 8.5 15.5 10.4 10.4z"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/>',
+  fisica:'<path d="M4 3h16"/><path d="M12 3l4.5 11.5"/><circle cx="17.5" cy="17" r="3.2"/><path d="M12 3 9 10" stroke-dasharray="1.5 2.2"/><path d="M5 20c1-.8 2-.8 3 0s2 .8 3 0"/>',
+  matematicas:'<path d="M17 4H7l6 8-6 8h10"/><path d="M19 9v2M18 10h2"/>',
+  geometria:'<path d="M12 3 21 19H3z"/><circle cx="12" cy="13.5" r="3.8"/><path d="M12 3v16"/>',
+  biologia:'<path d="M10 21V6.5a2 2 0 0 1 4 0V21"/><path d="M14 12.5h2.2a2 2 0 0 0 2-2V8.2"/><path d="M10 14.5H7.8a2 2 0 0 1-2-2v-2.3"/><path d="M5 21h14"/>',
+  quimica:'<path d="M9 3h6"/><path d="M10 3v6.2L4.6 18.2A2 2 0 0 0 6.3 21h11.4a2 2 0 0 0 1.7-2.8L14 9.2V3"/><path d="M7.2 15h9.6"/><circle cx="11" cy="18" r=".6"/><circle cx="14" cy="17" r=".6"/>',
+  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+  wave:'<path d="M2 9c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5-1"/><path d="M2 15c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5-1"/>',
+  mount:'<path d="M2 20 9 7l4 7 2-3 7 9z"/>',
+  bird:'<path d="M3 13c3-4 6-4 9 0 3-4 6-4 9 0"/><path d="M12 13v6"/>',
+  salt:'<path d="M4 18h16"/><path d="M6 18 9 11l3 4 2-3 4 6"/><path d="M15 6l1 1M18 4l.5.5M12 4l.5.5"/>',
+  wind:'<path d="M3 8h11a3 3 0 1 0-3-3"/><path d="M3 12h15a3 3 0 1 1-3 3"/><path d="M3 16h7"/>',
+  img:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/>',
+  video:'<rect x="3" y="5" width="14" height="14" rx="2"/><path d="m17 10 4-2v8l-4-2"/>',
+  doc:'<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/>',
+  slides:'<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8"/>',
+  home:'<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/>'
+};
+const ico = (n,s=24,w=1.8)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]}</svg>`;
+
+/* =====================================================================
+   CONTENIDO EDITABLE
+   ---------------------------------------------------------------------
+   Aquí se cambian todos los textos e imágenes de la página.
+   · Escribe entre comillas simples: titulo:'Mi título'.
+   · Si un campo queda vacío (''), la página muestra un espacio gris.
+   · imagen / foto: ruta del archivo, por ejemplo 'imagenes/foto1.jpg'.
+   · Para agregar otro tema o foto, copia una línea { ... }, y pégala debajo.
+   · Preguntas: «correcta» es el número de la opción buena,
+     contando desde 0 (0 = primera, 1 = segunda, 2 = tercera).
+   ===================================================================== */
+const CONTENIDO = {
+
+  proyecto:{
+    lugar:'Proyecto escolar 2026, La Guajira, Colombia',
+    titulo:'Dunas del Saber',
+    frase:'Donde el desierto se encuentra con el mar, empieza el conocimiento.',
+    bienvenidaTitulo:'Bienvenidos',
+    bienvenida:'',            // Presentación del proyecto
+    pie:''                    // Colegio, curso, docente o año
+  },
+
+  integrantes:[
+    { nombre:'', rol:'', descripcion:'', foto:'' },
+    { nombre:'', rol:'', descripcion:'', foto:'' },
+    { nombre:'', rol:'', descripcion:'', foto:'' },
+    { nombre:'', rol:'', descripcion:'', foto:'' }
+  ],
+
+  datos:{
+    titulo:'La Guajira',
+    items:[
+      { titulo:'', descripcion:'', imagen:'' },
+      { titulo:'', descripcion:'', imagen:'' },
+      { titulo:'', descripcion:'', imagen:'' }
+    ]
+  },
+
+  materias:{
+
+    lenguaje:{
+      lema:'Leer, escribir y comunicar',
+      descripcion:'',
+      temas:[
+        { titulo:'', descripcion:'', imagen:'' },
+        { titulo:'', descripcion:'', imagen:'' },
+        { titulo:'', descripcion:'', imagen:'' }
+      ],
+      galeria:[ { titulo:'', imagen:'' }, { titulo:'', imagen:'' }, { titulo:'', imagen:'' } ],
+      preguntas:[
+        { pregunta:'La palabra «camión» es…', opciones:['Aguda','Grave','Esdrújula'], correcta:0, explicacion:'La fuerza recae en la última sílaba y termina en n, por eso lleva tilde.' },
+        { pregunta:'¿Cuál de estas palabras es esdrújula?', opciones:['Examen','Brújula','Reloj'], correcta:1, explicacion:'Brú-ju-la: la sílaba tónica es la antepenúltima.' },
+        { pregunta:'Un texto cuyo propósito es convencer al lector es…', opciones:['Narrativo','Descriptivo','Argumentativo'], correcta:2, explicacion:'El texto argumentativo defiende una postura con razones.' }
+      ]
+    },
+
+    sociales:{
+      lema:'Historia, geografía y cultura',
+      descripcion:'',
+      temas:[
+        { titulo:'', descripcion:'', imagen:'' },
+        { titulo:'', descripcion:'', imagen:'' },
+        { titulo:'', descripcion:'', imagen:'' }
+      ],
+      galeria:[ { titulo:'', imagen:'' }, { titulo:'', imagen:'' }, { titulo:'', imagen:'' } ],
+      preguntas:[
+        { pregunta:'¿Cuál es la capital del departamento de La Guajira?', opciones:['Maicao','Riohacha','Uribia'], correcta:1, explicacion:'Riohacha es la capital del departamento.' },
+        { pregunta:'¿Cómo se llama la lengua del pueblo wayuu?', opciones:['Wayuunaiki','Quechua','Guaraní'], correcta:0, explicacion:'El wayuunaiki es la lengua propia del pueblo wayuu.' },
+        { pregunta:'¿Cuál es la función principal del palabrero?', opciones:['Dirigir la pesca','Resolver conflictos mediante el diálogo','Tejer las mochilas'], correcta:1, explicacion:'El palabrero media entre las partes para resolver conflictos con la palabra.' }
+      ]
+    },
+
+    fisica:{
+      lema:'Movimiento, fuerzas y energía',
+      descripcion:'',
+      temas:[
+        { titulo:'', descripcion:'', imagen:'' },
+        { titulo:'', descripcion:'', imagen:'' },
+        { titulo:'', descripcion:'', imagen:'' }
+      ],
+      galeria:[ { titulo:'', imagen:'' }, { titulo:'', imagen:'' }, { titulo:'', imagen:'' } ],
+      preguntas:[
+        { pregunta:'Si a un objeto de 2 kg se le aplica una aceleración de 3 m/s², ¿cuál es la fuerza?', opciones:['5 N','6 N','1,5 N'], correcta:1, explicacion:'F = m · a = 2 kg × 3 m/s² = 6 N.' },
+        { pregunta:'¿En qué unidad se mide la fuerza?', opciones:['Julio','Vatio','Newton'], correcta:2, explicacion:'La fuerza se mide en newtons (N).' },
+        { pregunta:'La energía que tiene un cuerpo por estar en movimiento se llama…', opciones:['Cinética','Potencial','Térmica'], correcta:0, explicacion:'La energía cinética depende de la masa y de la velocidad.' }
+      ]
+    },
+
+    matematicas:{
+      lema:'Números, operaciones y problemas',
+      descripcion:'',
+      temas:[
+        { titulo:'', descripcion:'', imagen:'' },
+        { titulo:'', descripcion:'', imagen:'' },
+        { titulo:'', descripcion:'', imagen:'' }
+      ],
+      galeria:[ { titulo:'', imagen:'' }, { titulo:'', imagen:'' }, { titulo:'', imagen:'' } ],
+      preguntas:[
+        { pregunta:'¿Cuál es el resultado de 3 + 4 × 2?', opciones:['14','11','10'], correcta:1, explicacion:'Primero la multiplicación: 4 × 2 = 8, luego 3 + 8 = 11.' },
+        { pregunta:'¿Cuál es la pendiente de y = 3x − 5?', opciones:['3','−5','5'], correcta:0, explicacion:'En y = mx + b, la pendiente es el número que multiplica a x.' },
+        { pregunta:'¿Cuánto es el 25 % de 80?', opciones:['25','20','32'], correcta:1, explicacion:'25 % es la cuarta parte: 80 ÷ 4 = 20.' }
+      ]
+    },
+
+    geometria:{
+      lema:'Formas, medidas y espacio',
+      descripcion:'',
+      temas:[
+        { titulo:'', descripcion:'', imagen:'' },
+        { titulo:'', descripcion:'', imagen:'' },
+        { titulo:'', descripcion:'', imagen:'' }
+      ],
+      galeria:[ { titulo:'', imagen:'' }, { titulo:'', imagen:'' }, { titulo:'', imagen:'' } ],
+      preguntas:[
+        { pregunta:'¿Cuál es el área de un triángulo con base 10 cm y altura 4 cm?', opciones:['40 cm²','14 cm²','20 cm²'], correcta:2, explicacion:'A = (10 × 4) ÷ 2 = 20 cm².' },
+        { pregunta:'Si los catetos miden 6 y 8, ¿cuánto mide la hipotenusa?', opciones:['10','14','12'], correcta:0, explicacion:'c² = 36 + 64 = 100, entonces c = 10.' },
+        { pregunta:'¿Cuánto suman los ángulos internos de un triángulo?', opciones:['90°','180°','360°'], correcta:1, explicacion:'En todo triángulo, los tres ángulos internos suman 180°.' }
+      ]
+    },
+
+    biologia:{
+      lema:'Vida, ecosistemas y biodiversidad',
+      descripcion:'',
+      temas:[
+        { titulo:'', descripcion:'', imagen:'' },
+        { titulo:'', descripcion:'', imagen:'' },
+        { titulo:'', descripcion:'', imagen:'' }
+      ],
+      galeria:[ { titulo:'', imagen:'' }, { titulo:'', imagen:'' }, { titulo:'', imagen:'' } ],
+      preguntas:[
+        { pregunta:'En una cadena alimentaria, una planta cumple el papel de…', opciones:['Consumidor primario','Productor','Descomponedor'], correcta:1, explicacion:'Las plantas producen su alimento mediante la fotosíntesis.' },
+        { pregunta:'Las espinas de muchos cactus son…', opciones:['Hojas modificadas','Raíces aéreas','Flores secas'], correcta:0, explicacion:'Al transformarse en espinas, las hojas reducen la pérdida de agua.' },
+        { pregunta:'¿En qué orgánulo ocurre la fotosíntesis?', opciones:['Núcleo','Mitocondria','Cloroplasto'], correcta:2, explicacion:'Los cloroplastos contienen clorofila, que captura la luz del sol.' }
+      ]
+    },
+
+    quimica:{
+      lema:'Materia, elementos y reacciones',
+      descripcion:'',
+      temas:[
+        { titulo:'', descripcion:'', imagen:'' },
+        { titulo:'', descripcion:'', imagen:'' },
+        { titulo:'', descripcion:'', imagen:'' }
+      ],
+      galeria:[ { titulo:'', imagen:'' }, { titulo:'', imagen:'' }, { titulo:'', imagen:'' } ],
+      preguntas:[
+        { pregunta:'¿Cuál es la fórmula química del agua?', opciones:['CO₂','H₂O','NaCl'], correcta:1, explicacion:'El agua tiene dos átomos de hidrógeno y uno de oxígeno.' },
+        { pregunta:'El número atómico de un elemento indica la cantidad de…', opciones:['Neutrones','Moléculas','Protones'], correcta:2, explicacion:'El número atómico es el número de protones del núcleo.' },
+        { pregunta:'La sal común (NaCl) se forma mediante un enlace…', opciones:['Iónico','Covalente','Metálico'], correcta:0, explicacion:'El sodio cede un electrón al cloro y se forman iones que se atraen.' }
+      ]
+    }
+  }
+};
+/* ======================= FIN DEL CONTENIDO EDITABLE ======================= */
+
+
+/* ---------- Estructura de las materias (normalmente no hace falta cambiarla) ---------- */
+const S = {
+  lenguaje:{n:'Lenguaje', c:['#B44A25','#F0946B'], size:'lg', w:[
+    {w:'escritura', t:'Taller de escritura', h:'Escribe tu texto: el contador te ayuda a revisarlo y el borrador se guarda en este navegador.', k:'escribir redaccion contador palabras borrador'}]},
+  sociales:{n:'Sociales', c:['#94650F','#E7B54F'], size:'', w:[
+    {w:'mapa', t:'Mapa ilustrado de La Guajira', h:'Toca o haz clic en cada punto para conocer el lugar.', k:'mapa lugares punta gallinas cabo de la vela uribia manaure maicao riohacha'}]},
+  fisica:{n:'Física', c:['#14707E','#5CC6CF'], size:'', w:[
+    {w:'proyectil', t:'Simulador de lanzamiento', h:'Cambia la velocidad, el ángulo y el lugar. Observa cómo varían el alcance y la altura.', k:'simulador proyectil lanzamiento parabolico alcance gravedad'}]},
+  matematicas:{n:'Matemáticas', c:['#843B72','#D58BC6'], size:'wide', w:[]},
+  geometria:{n:'Geometría', c:['#A9521A','#F2A262'], size:'', w:[
+    {w:'figura', t:'Calculadora de figuras', h:'Elige una figura y ajusta sus medidas para ver el área y el perímetro.', k:'figura area perimetro rectangulo triangulo circulo'}]},
+  biologia:{n:'Biología', c:['#4A6A2B','#9CC46C'], size:'', w:[
+    {w:'cadena', t:'Cadena alimentaria', h:'Toca los seres vivos en orden, desde quien produce el alimento hasta el último consumidor.', k:'cadena alimentaria productor consumidor'}]},
+  quimica:{n:'Química', c:['#285C82','#7FB5E0'], size:'wide', w:[
+    {w:'tabla', t:'Tabla periódica', h:'Toca un elemento para ver su información. Usa la leyenda para resaltar familias.', k:'tabla periodica elementos'},
+    {w:'balance', t:'Balanceo de ecuaciones', h:'Ajusta los coeficientes hasta que haya los mismos átomos a cada lado.', k:'ecuacion quimica balancear coeficientes'},
+    {w:'ph', t:'Escala de pH', h:'Elige una sustancia de la casa para ver si es ácida o básica.', k:'ph acido base neutro'}]}
+};
+
+/* ---------- Ayudas para mostrar contenido editable ---------- */
+const MCOL = ['var(--terracota)','var(--gold)','var(--turq)','var(--cactus)'];
+const txt = (v,ph)=> v ? esc(v) : `<span class="ph">${ph}</span>`;
+const pic = (src,alt)=> src ? `<img src="${esc(src)}" alt="${esc(alt||'')}" loading="lazy">` : `${ico('img',30)}<span>Agrega una imagen</span>`;
+const card = (t,ph)=>`<article class="ecard rv"><div class="pic${t.imagen?'':' empty'}">${pic(t.imagen,t.titulo)}</div><div class="txt"><h3>${txt(t.titulo,ph)}</h3><p>${txt(t.descripcion,'Escribe aquí una descripción.')}</p></div></article>`;
+const avatarSvg = c=>`<svg viewBox="0 0 96 96" role="img" aria-label="Espacio para fotografía"><circle cx="48" cy="48" r="48" style="fill:var(--surface-2)"/><circle cx="48" cy="38" r="15" style="fill:${c}" opacity=".85"/><path d="M20 84c4-16 15-24 28-24s24 8 28 24" style="fill:${c}" opacity=".85"/></svg>`;
+const KEYS = Object.keys(S);
+
+/* ---------- Página de inicio ---------- */
+function buildHome(){
+  const P = CONTENIDO.proyecto;
+  const titulo = P.titulo || 'Dunas del Saber';
+  $('#brand-name').textContent = titulo;
+  $('#h-lugar').textContent = P.lugar; $('#h-lugar').hidden = !P.lugar;
+  $('#h-titulo').textContent = titulo;
+  $('#h-frase').textContent = P.frase; $('#h-frase').hidden = !P.frase;
+  $('#b-titulo').textContent = P.bienvenidaTitulo || 'Bienvenidos';
+  $('#b-texto').innerHTML = txt(P.bienvenida, 'Escribe aquí la presentación del proyecto.');
+  $('#team').innerHTML = CONTENIDO.integrantes.map((m,i)=>{ const c = MCOL[i % MCOL.length];
+    return `<article class="member rv" style="--mc:${c}"><div class="m-top"></div><div class="avatar">${m.foto ? `<img src="${esc(m.foto)}" alt="Foto de ${esc(m.nombre || 'integrante '+(i+1))}">` : avatarSvg(c)}</div><div class="m-body"><h3>${txt(m.nombre,'Integrante '+(i+1))}</h3><span class="role">${txt(m.rol,'Rol en el proyecto')}</span><p>${txt(m.descripcion,'Breve descripción personal o académica.')}</p></div></article>`; }).join('');
+  $('#mosaic').innerHTML = KEYS.map(k=>{ const s = S[k], l = CONTENIDO.materias[k].lema;
+    return `<a class="tile rv ${s.size}" href="#/${k}" style="--accent:${s.c[0]}"><span class="t-ico">${ico(k, s.size==='lg'?220:140, 1.4)}</span><h3>${s.n}</h3>${l ? `<p>${esc(l)}</p>` : ''}</a>`; }).join('');
+  $('#d-titulo').textContent = CONTENIDO.datos.titulo || 'La Guajira';
+  $('#datos-cards').innerHTML = CONTENIDO.datos.items.map((d,i)=>card(d,'Dato '+(i+1))).join('');
+  $('#f-titulo').textContent = titulo;
+  $('#f-pie').innerHTML = txt(P.pie, 'Colegio, curso y año');
+  $('#f-team').innerHTML = CONTENIDO.integrantes.map((m,i)=>`<li>${esc(m.nombre || 'Integrante '+(i+1))}</li>`).join('');
+  $('#f-links').innerHTML = `<li><a href="#/">Inicio</a></li>` + KEYS.map(k=>`<li><a href="#/${k}">${S[k].n}</a></li>`).join('');
+  $('#navlinks').innerHTML = `<li><a href="#/" data-r="">Inicio</a></li>` + KEYS.map(k=>`<li><a href="#/${k}" data-r="${k}">${S[k].n}</a></li>`).join('');
+}
+
+/* ---------- Página de cada materia ---------- */
+const dunes = `<svg class="s-dunes" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50 C 240 10 480 30 720 52 S 1200 20 1440 44 V90 H0Z" style="fill:var(--accent)" opacity=".18"/><path d="M0 70 C 300 36 600 52 900 72 S 1300 54 1440 64 V90 H0Z" style="fill:var(--bg)"/></svg>`;
+function renderSubject(k){
+  const s = S[k], c = CONTENIDO.materias[k];
+  const sec = (id,title,inner)=>`<section class="topic rv" id="t-${k}-${id}"><h2>${title}</h2>${inner}</section>`;
+  const temas = `<div class="cards">${c.temas.map((t,i)=>card(t,'Tema '+(i+1))).join('')}</div>`;
+  const actividades = `<div class="wgrid">${s.w.map(x=>`<div class="widget"><h3>${x.t}</h3><p class="w-help">${x.h}</p><div data-w="${x.w}"></div></div>`).join('')}</div>`;
+  const galeria = `<div class="slots">${c.galeria.map(g=> g.imagen
+      ? `<figure class="slot filled"><img src="${esc(g.imagen)}" alt="${esc(g.titulo||'')}" loading="lazy">${g.titulo ? `<figcaption>${esc(g.titulo)}</figcaption>` : ''}</figure>`
+      : `<figure class="slot">${ico('img',34)}<figcaption>${g.titulo ? esc(g.titulo) : 'Espacio para imagen'}</figcaption></figure>`).join('')}</div>`;
+  const others = KEYS.filter(x=>x!==k).map(x=>`<a href="#/${x}" style="--c:${S[x].c[0]}">${ico(x,22)}${S[x].n}</a>`).join('');
+  $('#subject').innerHTML = `
+  <div class="subject" style="--acc-l:${s.c[0]};--acc-d:${s.c[1]}">
+    <header class="s-hero">
+      <div class="wrap s-in">
+        <a class="back" href="#/">Volver al inicio</a>
+        <h1>${s.n}</h1>
+        ${c.lema ? `<p class="tag">${esc(c.lema)}</p>` : ''}
+        <p class="lead">${txt(c.descripcion,'Escribe aquí una introducción a la materia.')}</p>
+      </div>
+      ${dunes}
+    </header>
+    <nav class="s-menu" aria-label="Secciones de ${s.n}"><div class="wrap chips">
+      <a class="chip" href="#/${k}/temas">Temas</a>${s.w.length ? `<a class="chip" href="#/${k}/actividades">Actividades</a>` : ''}<a class="chip" href="#/${k}/galeria">Galería</a><a class="chip" href="#/${k}/cuestionario">Cuestionario</a>
+    </div></nav>
+    <div class="wrap s-body">
+      ${sec('temas','Temas',temas)}
+      ${s.w.length ? sec('actividades','Actividades interactivas',actividades) : ''}
+      ${sec('galeria','Galería',galeria)}
+      ${sec('cuestionario','Cuestionario',`<div class="widget"><div data-quiz></div></div>`)}
+    </div>
+    <section class="wrap more">
+      <h2>Otras materias</h2>
+      <div class="more-grid"><a href="#/" style="--c:var(--ink)">${ico('home',22)}Inicio</a>${others}</div>
+    </section>
+  </div>`;
+  $$('#subject [data-w]').forEach(el=>{ const f = W[el.dataset.w]; if(f) f(el,k); });
+  quiz($('#subject [data-quiz]'), (c.preguntas||[]).map(p=>({ q:esc(p.pregunta), o:p.opciones.map(esc), a:p.correcta, w:esc(p.explicacion||'') })));
+}
+
+/* ---------- Cuestionarios ---------- */
+function quiz(el,qs){
+  if(!qs||!qs.length){ el.innerHTML='<p class="ph" style="margin:0">Agrega las preguntas en el bloque CONTENIDO EDITABLE.</p>'; return; }
+  let score=0, done=0;
+  el.innerHTML = qs.map((q,i)=>`<div class="q"><p class="qt">${i+1}. ${q.q}</p><div class="opts">${q.o.map((o,j)=>`<button class="opt" type="button" data-q="${i}" data-j="${j}">${o}</button>`).join('')}</div><div class="fb-slot" aria-live="polite"></div></div>`).join('')+
+    `<p class="score" aria-live="polite">Responde las ${qs.length} preguntas.</p><button class="btn small ghost rq" type="button">Reiniciar cuestionario</button>`;
+  $$('.opt',el).forEach(b=>b.addEventListener('click',()=>{
+    const i=+b.dataset.q, j=+b.dataset.j, q=qs[i];
+    const group=$$(`.opt[data-q="${i}"]`,el);
+    group.forEach(x=>x.disabled=true);
+    group[q.a].classList.add('right');
+    const ok=j===q.a; if(!ok) b.classList.add('wrong'); else score++;
+    done++;
+    group[0].closest('.q').querySelector('.fb-slot').innerHTML = `<p class="fb ${ok?'ok':'bad'}"><b>${ok?'¡Correcto!':'No es correcto.'}</b> ${q.w}</p>`;
+    $('.score',el).textContent = done<qs.length ? `Llevas ${score} de ${done} correctas.` : `Resultado final: ${score} de ${qs.length} correctas.${score===qs.length?' ¡Excelente trabajo!':' Repasa el tema y vuelve a intentarlo.'}`;
+  }));
+  $('.rq',el).addEventListener('click',()=>quiz(el,qs));
+}
+
+/* ---------- Widgets interactivos ---------- */
+const accentOf = el=>getComputedStyle(el).getPropertyValue('--accent').trim()||'#B84B24';
+const cssv = (el,v)=>getComputedStyle(el).getPropertyValue(v).trim();
+function fitCanvas(cv,h){ const r=window.devicePixelRatio||1; const w=cv.clientWidth||600; cv.width=w*r; cv.height=h*r; cv.style.height=h+'px'; const c=cv.getContext('2d'); c.setTransform(r,0,0,r,0,0); return {c,w,h}; }
+const W = {};
+
+W.escritura = el=>{
+  let saved=''; try{ saved=localStorage.getItem('dunas-borrador')||''; }catch(e){}
+  el.innerHTML = `<label class="sr" for="wr">Tu texto</label><textarea id="wr" placeholder="Empieza a escribir sobre el paisaje, una persona o una historia de tu región…"></textarea>
+    <div class="counts" aria-live="polite"></div><div class="row" style="margin-top:12px"><button class="btn small ghost" type="button">Borrar el texto</button></div>`;
+  const ta=$('textarea',el), out=$('.counts',el);
+  ta.value=saved;
+  const upd=()=>{ const t=ta.value.trim(); const words=t?t.split(/\s+/).length:0; const sent=t?(t.match(/[^.!?¡¿]+[.!?]+/g)||[t]).length:0; const mins=Math.max(1,Math.round(words/200));
+    out.innerHTML=`<span><b>${words}</b> palabras</span><span><b>${sent}</b> oraciones</span><span><b>${ta.value.length}</b> caracteres</span><span>Lectura: <b>${words?mins:0}</b> min</span>`;
+    try{ localStorage.setItem('dunas-borrador',ta.value); }catch(e){} };
+  ta.addEventListener('input',upd);
+  $('button',el).addEventListener('click',()=>{ ta.value=''; upd(); ta.focus(); });
+  upd();
+};
+
+W.mapa = el=>{
+  const P=[
+    {n:'Punta Gallinas', x:232, y:40, d:'El punto más al norte de Sudamérica continental.'},
+    {n:'Dunas de Taroa', x:262, y:60, d:'Dunas que descienden hasta el mar Caribe.'},
+    {n:'Serranía de la Macuira', x:312, y:112, d:'Bosque nublado en medio de la zona desértica.'},
+    {n:'Cabo de la Vela', x:112, y:156, d:'Famoso por sus vientos y lugar sagrado para el pueblo wayuu.'},
+    {n:'Uribia', x:168, y:178, d:'Conocida como la capital indígena de Colombia.'},
+    {n:'Manaure', x:108, y:226, d:'Sede de las salinas, donde se obtiene sal marina.'},
+    {n:'Riohacha', x:84, y:278, d:'Capital del departamento, en la desembocadura del río Ranchería.'},
+    {n:'Camarones', x:58, y:300, d:'Cerca está el Santuario de Flora y Fauna Los Flamencos.'},
+    {n:'Maicao', x:236, y:268, d:'Ciudad comercial cercana a la frontera con Venezuela.'}
+  ];
+  el.innerHTML=`<div class="map-wrap"><svg viewBox="0 0 400 340" role="group" aria-label="Mapa ilustrado de La Guajira">
+    <rect width="400" height="340" rx="14" style="fill:color-mix(in srgb,var(--turq) 22%,var(--bg))"/>
+    <path d="M30 318 C 52 300 70 288 84 278 C 98 262 104 244 110 226 C 112 206 98 186 92 166 C 104 150 126 146 146 128 C 176 102 200 70 222 38 C 236 26 252 30 270 46 C 292 62 312 86 330 108 C 346 128 352 144 344 156 C 320 182 298 204 282 228 C 266 256 258 292 250 340 L 30 340 Z" style="fill:var(--sand);stroke:var(--accent)" stroke-width="2"/>
+    <path d="M344 156 C 320 182 298 204 282 228 C 266 256 258 292 250 340" fill="none" style="stroke:var(--ink)" stroke-width="1.5" stroke-dasharray="5 5" opacity=".6"/>
+    <text x="22" y="120" style="fill:var(--ink);font-size:13px;font-style:italic" opacity=".7">Mar Caribe</text>
+    <text x="300" y="250" style="fill:var(--ink);font-size:12px" opacity=".7">Venezuela</text>
+    ${P.map((p,i)=>`<g class="pin" tabindex="0" role="button" aria-label="${p.n}" data-i="${i}"><circle class="dot" cx="${p.x}" cy="${p.y}" r="6.5"/><text x="${p.x+10}" y="${p.y+4}">${p.n}</text></g>`).join('')}
+  </svg><div><div class="map-info" aria-live="polite"><b>Selecciona un lugar</b><p style="margin:.3em 0 0">Toca un punto del mapa para ver su descripción.</p></div><p class="w-help" style="margin-top:10px">Mapa ilustrativo, no está a escala.</p></div></div>`;
+  const pins=$$('.pin',el), info=$('.map-info',el);
+  const set=i=>{ pins.forEach((g,j)=>g.classList.toggle('on',j===i)); info.innerHTML=`<b style="font-size:1.15rem">${P[i].n}</b><p style="margin:.3em 0 0">${P[i].d}</p>`; };
+  pins.forEach(g=>{ g.addEventListener('click',()=>set(+g.dataset.i)); g.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); set(+g.dataset.i);} }); });
+};
+
+W.proyectil = el=>{
+  el.innerHTML=`<canvas aria-label="Simulación de lanzamiento parabólico"></canvas>
+   <div class="ctrls">
+    <label>Velocidad inicial: <span><output data-o="v">20</output> m/s</span><input type="range" min="5" max="40" value="20" data-k="v"></label>
+    <label>Ángulo: <span><output data-o="a">45</output>°</span><input type="range" min="10" max="80" value="45" data-k="a"></label>
+    <label>Lugar<select data-k="g"><option value="9.8">Tierra (9,8 m/s²)</option><option value="3.71">Marte (3,71 m/s²)</option><option value="1.62">Luna (1,62 m/s²)</option></select></label>
+    <button class="btn" type="button">Lanzar</button>
+   </div><div class="readout" aria-live="polite"></div>`;
+  const cv=$('canvas',el); let anim=null, last=null;
+  const vals=()=>({v:+$('[data-k=v]',el).value, a:+$('[data-k=a]',el).value, g:+$('[data-k=g]',el).value});
+  const calc=p=>{const th=p.a*Math.PI/180; return {th, T:2*p.v*Math.sin(th)/p.g, R:p.v*p.v*Math.sin(2*th)/p.g, H:Math.pow(p.v*Math.sin(th),2)/(2*p.g)};};
+  function draw(p,frac){
+    const {c,w,h}=fitCanvas(cv,280); const acc=accentOf(el), ink=cssv(el,'--ink'), sand=cssv(el,'--sand'), muted=cssv(el,'--muted');
+    const r=calc(p); const ox=34, oy=h-38;
+    const sc=Math.min((w-70)/r.R,(h-80)/r.H);
+    c.clearRect(0,0,w,h);
+    c.fillStyle=sand; c.beginPath(); c.moveTo(0,oy); c.bezierCurveTo(w*.3,oy-10,w*.6,oy+8,w,oy-4); c.lineTo(w,h); c.lineTo(0,h); c.fill();
+    c.setLineDash([4,6]); c.strokeStyle=muted; c.lineWidth=1.2; c.beginPath();
+    for(let i=0;i<=60;i++){const t=r.T*i/60; const x=ox+p.v*Math.cos(r.th)*t*sc, y=oy-(p.v*Math.sin(r.th)*t-.5*p.g*t*t)*sc; i?c.lineTo(x,y):c.moveTo(x,y);} c.stroke(); c.setLineDash([]);
+    c.strokeStyle=acc; c.lineWidth=3; c.beginPath(); const n=Math.max(1,Math.round(80*frac));
+    let bx=ox, by=oy;
+    for(let i=0;i<=n;i++){const t=r.T*frac*i/n; bx=ox+p.v*Math.cos(r.th)*t*sc; by=oy-(p.v*Math.sin(r.th)*t-.5*p.g*t*t)*sc; i?c.lineTo(bx,by):c.moveTo(bx,by);} c.stroke();
+    c.fillStyle=acc; c.beginPath(); c.arc(bx,by,8,0,Math.PI*2); c.fill();
+    c.fillStyle=ink; c.font='600 12px system-ui, sans-serif'; c.fillText('Altura máx. '+fmt(r.H)+' m', ox+r.R*sc/2-46, oy-r.H*sc-10);
+    c.fillText('Alcance '+fmt(r.R)+' m', Math.max(ox, ox+r.R*sc-90), oy+24);
+  }
+  function out(p){ const r=calc(p); $('.readout',el).innerHTML=`<span>Alcance: <b>${fmt(r.R)} m</b></span><span>Altura máxima: <b>${fmt(r.H)} m</b></span><span>Tiempo de vuelo: <b>${fmt(r.T)} s</b></span>`; }
+  function launch(){ const p=vals(); last=p; out(p); cancelAnimationFrame(anim); if(reduce){draw(p,1);return;} const t0=performance.now(); const step=now=>{ const f=Math.min(1,(now-t0)/1800); draw(p,f); if(f<1) anim=requestAnimationFrame(step); }; anim=requestAnimationFrame(step); }
+  $$('input,select',el).forEach(i=>i.addEventListener('input',()=>{ const p=vals(); $('[data-o=v]',el).textContent=p.v; $('[data-o=a]',el).textContent=p.a; last=p; draw(p,1); out(p); }));
+  $('button',el).addEventListener('click',launch);
+  const p=vals(); last=p; requestAnimationFrame(()=>{draw(p,1); out(p);});
+  window.addEventListener('resize',()=>{ if(last && document.body.contains(cv)) draw(last,1); });
+};
+
+W.figura = el=>{
+  const SH={rect:{n:'Rectángulo',p:[['b','Base',8,1,20],['h','Altura',5,1,15]]}, tri:{n:'Triángulo isósceles',p:[['b','Base',8,1,20],['h','Altura',6,1,15]]}, circ:{n:'Círculo',p:[['r','Radio',4,1,10]]}};
+  let cur='rect', v={};
+  el.innerHTML=`<div class="shape-tabs" role="group" aria-label="Figura">${Object.keys(SH).map(k=>`<button type="button" data-s="${k}" aria-pressed="false">${SH[k].n}</button>`).join('')}</div><div class="ctrls" data-c></div><svg class="geo-svg" viewBox="0 0 320 220" aria-label="Figura geométrica"></svg><div class="readout" aria-live="polite"></div>`;
+  const svg=$('svg',el);
+  function render(){
+    const acc='var(--accent)';
+    let g='', A, P, f;
+    if(cur==='rect'){ const s=Math.min(260/v.b,170/v.h); const W2=v.b*s,H2=v.h*s,x=(320-W2)/2,y=(220-H2)/2;
+      g=`<rect x="${x}" y="${y}" width="${W2}" height="${H2}" rx="2" style="fill:color-mix(in srgb,${acc} 22%,transparent);stroke:${acc}" stroke-width="3"/><text x="160" y="${y+H2+16}" text-anchor="middle">b = ${v.b} cm</text><text x="${x+W2+8}" y="${y+H2/2}">h = ${v.h} cm</text>`;
+      A=v.b*v.h; P=2*(v.b+v.h); f=`A = ${v.b} × ${v.h}`; }
+    else if(cur==='tri'){ const s=Math.min(260/v.b,170/v.h); const W2=v.b*s,H2=v.h*s,x=(320-W2)/2,y=(220-H2)/2; const side=Math.sqrt((v.b/2)**2+v.h**2);
+      g=`<path d="M${x} ${y+H2} L${160} ${y} L${x+W2} ${y+H2}Z" style="fill:color-mix(in srgb,${acc} 22%,transparent);stroke:${acc}" stroke-width="3" stroke-linejoin="round"/><path d="M160 ${y} V${y+H2}" style="stroke:var(--ink)" stroke-dasharray="4 4"/><text x="160" y="${y+H2+16}" text-anchor="middle">b = ${v.b} cm</text><text x="166" y="${y+H2/2}">h = ${v.h} cm</text>`;
+      A=v.b*v.h/2; P=v.b+2*side; f=`A = (${v.b} × ${v.h}) ÷ 2`; }
+    else { const s=90/v.r; const R=v.r*s;
+      g=`<circle cx="160" cy="110" r="${R}" style="fill:color-mix(in srgb,${acc} 22%,transparent);stroke:${acc}" stroke-width="3"/><path d="M160 110 H${160+R}" style="stroke:var(--ink)" stroke-width="2"/><circle cx="160" cy="110" r="3" style="fill:var(--ink)"/><text x="${160+R/2}" y="104" text-anchor="middle">r = ${v.r} cm</text>`;
+      A=Math.PI*v.r*v.r; P=2*Math.PI*v.r; f=`A = π × ${v.r}²`; }
+    svg.innerHTML=`<g style="fill:var(--ink);font-size:12px;font-family:inherit">${g}</g>`;
+    $('.readout',el).innerHTML=`<span>${f}</span><span>Área: <b>${fmt(A,2)} cm²</b></span><span>${cur==='circ'?'Longitud':'Perímetro'}: <b>${fmt(P,2)} cm</b></span>`;
+  }
+  function setShape(k){ cur=k; v={}; $$('[data-s]',el).forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.s===k)));
+    $('[data-c]',el).innerHTML=SH[k].p.map(([id,l,d,mn,mx])=>{v[id]=d;return `<label>${l}: <span><output data-o="${id}">${d}</output> cm</span><input type="range" min="${mn}" max="${mx}" value="${d}" data-k="${id}"></label>`}).join('');
+    $$('[data-k]',el).forEach(i=>i.addEventListener('input',()=>{ v[i.dataset.k]=+i.value; $(`[data-o="${i.dataset.k}"]`,el).textContent=i.value; render(); }));
+    render(); }
+  $$('[data-s]',el).forEach(b=>b.addEventListener('click',()=>setShape(b.dataset.s)));
+  setShape('rect');
+};
+
+W.cadena = el=>{
+  const O=[{n:'Trupillo',r:'Productor'},{n:'Saltamontes',r:'Consumidor primario'},{n:'Lagartija',r:'Consumidor secundario'},{n:'Gavilán',r:'Consumidor terciario'}];
+  let pick=[];
+  function render(){
+    const order=[...O].sort((p,q)=>p.n.localeCompare(q.n)).reverse();
+    el.innerHTML=`
+      <div class="pool">${order.map(o=>`<button class="org" type="button" data-n="${o.n}" ${pick.includes(o.n)?'disabled':''}>${o.n}</button>`).join('')}</div>
+      <div class="chain">${O.map((o,i)=>`<div class="link">${i?'<span aria-hidden="true">▸</span>':''}<div class="box ${pick[i]?'full':''}">${pick[i]||'?'}<small>${pick[i]&&pick.length===O.length&&pick.every((p,j)=>p===O[j].n)?O[i].r:'Eslabón '+(i+1)}</small></div></div>`).join('')}</div>
+      <div class="fb-slot" aria-live="polite"></div><button class="btn small ghost" type="button" data-r style="margin-top:12px">Empezar de nuevo</button>`;
+    $$('.org',el).forEach(b=>b.addEventListener('click',()=>{ pick.push(b.dataset.n); render(); }));
+    $('[data-r]',el).addEventListener('click',()=>{ pick=[]; render(); });
+    if(pick.length===O.length){ const ok=pick.every((p,i)=>p===O[i].n);
+      $('.fb-slot',el).innerHTML = ok ? '<p class="fb ok"><b>¡Cadena correcta!</b> La energía pasa del trupillo al saltamontes, luego a la lagartija y finalmente al gavilán.</p>' : '<p class="fb bad"><b>Revisa el orden.</b> Pista: la cadena empieza con el ser vivo que hace fotosíntesis.</p>'; }
+  }
+  render();
+};
+
+W.tabla = el=>{
+  const SY='H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe Cs Ba La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Po At Rn Fr Ra Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr Rf Db Sg Bh Hs Mt Ds Rg Cn Nh Fl Mc Lv Ts Og'.split(' ');
+  const NM='Hidrógeno,Helio,Litio,Berilio,Boro,Carbono,Nitrógeno,Oxígeno,Flúor,Neón,Sodio,Magnesio,Aluminio,Silicio,Fósforo,Azufre,Cloro,Argón,Potasio,Calcio,Escandio,Titanio,Vanadio,Cromo,Manganeso,Hierro,Cobalto,Níquel,Cobre,Zinc,Galio,Germanio,Arsénico,Selenio,Bromo,Kriptón,Rubidio,Estroncio,Itrio,Circonio,Niobio,Molibdeno,Tecnecio,Rutenio,Rodio,Paladio,Plata,Cadmio,Indio,Estaño,Antimonio,Telurio,Yodo,Xenón,Cesio,Bario,Lantano,Cerio,Praseodimio,Neodimio,Prometio,Samario,Europio,Gadolinio,Terbio,Disprosio,Holmio,Erbio,Tulio,Iterbio,Lutecio,Hafnio,Tantalio,Wolframio,Renio,Osmio,Iridio,Platino,Oro,Mercurio,Talio,Plomo,Bismuto,Polonio,Astato,Radón,Francio,Radio,Actinio,Torio,Protactinio,Uranio,Neptunio,Plutonio,Americio,Curio,Berkelio,Californio,Einstenio,Fermio,Mendelevio,Nobelio,Laurencio,Rutherfordio,Dubnio,Seaborgio,Bohrio,Hassio,Meitnerio,Darmstatio,Roentgenio,Copernicio,Nihonio,Flerovio,Moscovio,Livermorio,Teneso,Oganesón'.split(',');
+  const CAT={alc:['Metales alcalinos','#F2A66B'],alt:['Alcalinotérreos','#F5CE6E'],tra:['Metales de transición','#E9B9A0'],pos:['Otros metales','#B8D3A6'],met:['Metaloides','#9FD3C7'],nom:['No metales','#A8D7F0'],hal:['Halógenos','#C9C2EE'],nob:['Gases nobles','#E7B3D8'],lan:['Lantánidos','#F0D9A8'],act:['Actínidos','#E6C6A2']};
+  const inS=(z,a)=>a.includes(z);
+  const cat=z=>{ if(inS(z,[3,11,19,37,55,87]))return'alc'; if(inS(z,[4,12,20,38,56,88]))return'alt'; if(z>=57&&z<=71)return'lan'; if(z>=89&&z<=103)return'act';
+    if(inS(z,[2,10,18,36,54,86,118]))return'nob'; if(inS(z,[9,17,35,53,85,117]))return'hal'; if(inS(z,[1,6,7,8,15,16,34]))return'nom'; if(inS(z,[5,14,32,33,51,52]))return'met';
+    if(inS(z,[13,31,49,50,81,82,83,84,113,114,115,116]))return'pos'; return'tra'; };
+  const pos=z=>{ if(z===1)return[1,1]; if(z===2)return[1,18];
+    const per=z<=10?2:z<=18?3:z<=36?4:z<=54?5:z<=86?6:7;
+    if(per<=3){ const s=per===2?3:11; const o=z-s; return [per,o<2?o+1:o+11]; }
+    if(per<=5){ const s=per===4?19:37; return [per,z-s+1]; }
+    const s=per===6?55:87; const o=z-s;
+    if(o<2) return [per,o+1];
+    if(o<=16) return [per===6?9:10, o+1];
+    return [per,o-13]; };
+  const els=SY.map((s,i)=>{const z=i+1,[r,c]=pos(z);return{z,s,n:NM[i],r,c,k:cat(z),per:z<=2?1:z<=10?2:z<=18?3:z<=36?4:z<=54?5:z<=86?6:7, grp:(r<=7?c:null)};});
+  let filt=null, sel=6;
+  el.innerHTML=`<div class="el-info" aria-live="polite"></div>
+    <div class="legend" role="group" aria-label="Familias">${Object.entries(CAT).map(([k,[n,c]])=>`<button type="button" data-k="${k}" aria-pressed="false" style="--cc:${c}"><i></i>${n}</button>`).join('')}</div>
+    <div class="pt-scroll"><div class="pt">${els.map(e=>`<button class="el" type="button" data-z="${e.z}" style="--cc:${CAT[e.k][1]};grid-row:${e.r>=9?e.r+1:e.r};grid-column:${e.c}" aria-label="${e.n}, número atómico ${e.z}"><span class="z">${e.z}</span><span class="sy">${e.s}</span></button>`).join('')}<div class="pt-gap" style="grid-row:9"></div></div></div>
+    <p class="w-help" style="margin-top:10px">Desliza la tabla hacia los lados en pantallas pequeñas.</p>`;
+  const info=$('.el-info',el);
+  function show(z){ sel=z; const e=els[z-1]; $$('.el',el).forEach(b=>b.classList.toggle('sel',+b.dataset.z===z));
+    const g = (e.k==='lan'||e.k==='act') ? 'Grupo 3 (bloque f)' : 'Grupo '+e.c;
+    info.innerHTML=`<div class="el-big" style="--cc:${CAT[e.k][1]}"><div><small>${e.z}</small><b>${e.s}</b></div></div><div><h4 style="margin:0 0 .2em;font-size:1.4rem">${e.n}</h4><p style="margin:0">${CAT[e.k][0]}. Período ${e.per}, ${g}.</p><p style="margin:.3em 0 0;color:var(--muted)">En estado neutro tiene ${e.z} protones y ${e.z} electrones.</p></div>`; }
+  $$('.el',el).forEach(b=>b.addEventListener('click',()=>show(+b.dataset.z)));
+  $$('.legend button',el).forEach(b=>b.addEventListener('click',()=>{ filt = filt===b.dataset.k?null:b.dataset.k;
+    $$('.legend button',el).forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.k===filt)));
+    $$('.el',el).forEach(x=>x.classList.toggle('dim', !!filt && els[+x.dataset.z-1].k!==filt)); }));
+  show(sel);
+};
+
+W.balance = el=>{
+  const EQ=[{n:'Formación del agua',L:['H2','O2'],R:['H2O']},{n:'Combustión del metano',L:['CH4','O2'],R:['CO2','H2O']},{n:'Neutralización',L:['NaOH','HCl'],R:['NaCl','H2O']}];
+  const parse=f=>{const o={};f.replace(/([A-Z][a-z]?)(\d*)/g,(m,e,n)=>{o[e]=(o[e]||0)+(n?+n:1);});return o;};
+  const sub=f=>f.replace(/(\d+)/g,'<sub>$1</sub>');
+  const gcd=(a,b)=>b?gcd(b,a%b):a;
+  let cur=0;
+  el.innerHTML=`<label style="display:grid;gap:6px;max-width:320px;font-weight:500">Reacción<select>${EQ.map((e,i)=>`<option value="${i}">${e.n}</option>`).join('')}</select></label><div class="eq" data-eq></div><div class="tbl-scroll"><table class="tally" data-t></table></div><div class="row" style="margin-top:12px"><button class="btn" type="button" data-c>Comprobar</button></div><div class="fb-slot" aria-live="polite"></div>`;
+  function build(){ const e=EQ[cur]; const inp=f=>`<input type="number" min="1" max="9" value="1" aria-label="Coeficiente de ${f}">${sub(f)}`;
+    $('[data-eq]',el).innerHTML = e.L.map(inp).join(' + ')+' <span aria-hidden="true">→</span><span class="sr">produce</span> '+e.R.map(inp).join(' + ');
+    $$('[data-eq] input',el).forEach(i=>i.addEventListener('input',tally)); $('.fb-slot',el).innerHTML=''; tally(); }
+  function counts(){ const e=EQ[cur], v=$$('[data-eq] input',el).map(i=>Math.max(0,parseInt(i.value)||0)); const side=(arr,off)=>{const o={};arr.forEach((f,i)=>{const p=parse(f);for(const k in p)o[k]=(o[k]||0)+p[k]*v[off+i];});return o;}; return {v,l:side(e.L,0),r:side(e.R,e.L.length)}; }
+  function tally(){ const {l,r}=counts(); const ks=[...new Set([...Object.keys(l),...Object.keys(r)])];
+    $('[data-t]',el).innerHTML=`<tr><th>Elemento</th><th>Reactivos</th><th>Productos</th><th>¿Iguales?</th></tr>`+ks.map(k=>`<tr><td><b>${k}</b></td><td>${l[k]||0}</td><td>${r[k]||0}</td><td>${(l[k]||0)===(r[k]||0)?'Sí':'No'}</td></tr>`).join(''); }
+  $('select',el).addEventListener('change',e=>{cur=+e.target.value; build();});
+  $('[data-c]',el).addEventListener('click',()=>{ const {v,l,r}=counts(); const ks=[...new Set([...Object.keys(l),...Object.keys(r)])];
+    const bal=v.every(x=>x>0)&&ks.every(k=>l[k]===r[k]); const g=v.reduce(gcd);
+    $('.fb-slot',el).innerHTML = !bal ? '<p class="fb bad"><b>Aún no está balanceada.</b> Revisa en la tabla qué elemento tiene cantidades distintas.</p>' : g>1 ? '<p class="fb ok"><b>Está balanceada,</b> pero puedes simplificar los coeficientes dividiéndolos entre '+g+'.</p>' : '<p class="fb ok"><b>¡Ecuación balanceada!</b> Hay la misma cantidad de átomos de cada elemento a ambos lados.</p>'; });
+  build();
+};
+
+W.ph = el=>{
+  const SU=[{n:'Jugo de limón',p:2},{n:'Vinagre',p:3},{n:'Agua pura',p:7},{n:'Agua de mar',p:8},{n:'Bicarbonato en agua',p:9},{n:'Jabón',p:10}];
+  el.innerHTML=`<div class="ph-bar"><div class="ph-mark" style="left:50%">pH 7</div></div><div class="ph-scale"><span>0 · ácido</span><span>7 · neutro</span><span>14 · básico</span></div><div class="subst" role="group" aria-label="Sustancias">${SU.map((s,i)=>`<button type="button" data-i="${i}" aria-pressed="false">${s.n}</button>`).join('')}</div><div class="fb-slot" aria-live="polite"><p class="w-help" style="margin-top:12px">Valores aproximados con fines educativos.</p></div>`;
+  $$('.subst button',el).forEach(b=>b.addEventListener('click',()=>{ const s=SU[+b.dataset.i];
+    $$('.subst button',el).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+    const m=$('.ph-mark',el); m.style.left=(s.p/14*100)+'%'; m.textContent='pH ≈ '+s.p;
+    const kind=s.p<7?'ácida':s.p>7?'básica':'neutra';
+    $('.fb-slot',el).innerHTML=`<p class="fb ok" style="background:var(--surface-2);color:var(--ink)"><b>${s.n}:</b> sustancia ${kind}, con pH aproximado de ${s.p}.</p><p class="w-help" style="margin-top:8px">Valores aproximados con fines educativos.</p>`; }));
+};
+
+/* ---------- Búsqueda ---------- */
+const norm=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const strip=h=>{const d=document.createElement('div'); d.innerHTML=h; return d.textContent.replace(/\s+/g,' ').trim();};
+const IDX=[];
+const addIdx=(h,t,s,x)=>IDX.push({h, t, s, x:x||''});
+KEYS.forEach(k=>{ const s=S[k], c=CONTENIDO.materias[k];
+  addIdx(`#/${k}`, s.n, 'Materia', (c.lema||'')+' '+(c.descripcion||''));
+  c.temas.forEach(t=>{ if(t.titulo||t.descripcion) addIdx(`#/${k}/temas`, t.titulo||'Tema', s.n, t.descripcion); });
+  s.w.forEach(w=>addIdx(`#/${k}/actividades`, w.t, s.n, w.h+' '+w.k));
+  addIdx(`#/${k}/galeria`, 'Galería de '+s.n, s.n, 'imagenes fotos galeria '+c.galeria.map(g=>g.titulo).join(' '));
+  addIdx(`#/${k}/cuestionario`, 'Cuestionario de '+s.n, s.n, 'preguntas quiz evaluacion '+(c.preguntas||[]).map(p=>p.pregunta).join(' '));
+});
+CONTENIDO.datos.items.forEach(d=>{ if(d.titulo||d.descripcion) addIdx('#/inicio/datos', d.titulo||'Dato', CONTENIDO.datos.titulo||'La Guajira', d.descripcion); });
+addIdx('#/inicio/integrantes', 'Integrantes', 'Inicio', 'equipo integrantes grupo '+CONTENIDO.integrantes.map(m=>m.nombre).join(' '));
+IDX.forEach(i=>{i.nt=norm(i.t); i.nx=norm(i.x);});
+const qIn=$('#q'), res=$('#results');
+function doSearch(){
+  const q=norm(qIn.value.trim()); if(!q){ res.hidden=true; return; }
+  const terms=q.split(/\s+/);
+  const hits=IDX.map(i=>{ if(!terms.every(t=>i.nt.includes(t)||i.nx.includes(t))) return null; let sc=0; terms.forEach(t=>{ if(i.nt.includes(t)) sc+=3; if(i.nx.includes(t)) sc+=1; }); return {i,sc}; }).filter(Boolean).sort((a,b)=>b.sc-a.sc).slice(0,8);
+  res.innerHTML = hits.length ? hits.map(({i})=>{ const p=i.nx.indexOf(terms[0]); const snip=p>=0? i.x.slice(Math.max(0,p-30),p+70):i.x.slice(0,90); return `<a href="${i.h}"><b>${esc(i.t)}</b><small>${esc(i.s)}: …${esc(snip)}…</small></a>`; }).join('') : `<p class="empty">No hay resultados para «${esc(qIn.value.trim())}». Prueba con el nombre de una materia o de una actividad.</p>`;
+  res.hidden=false;
+}
+qIn.addEventListener('input',doSearch);
+qIn.addEventListener('keydown',e=>{ if(e.key==='Enter'){ const a=$('a',res); if(a){ location.hash=a.getAttribute('href'); } } if(e.key==='Escape'){ qIn.value=''; res.hidden=true; } });
+document.addEventListener('click',e=>{ if(!e.target.closest('.search')) res.hidden=true; });
+
+/* ---------- Menú móvil ---------- */
+const top=$('#top'), burger=$('#burger');
+const closeMenu=()=>{ top.classList.remove('open'); burger.setAttribute('aria-expanded','false'); burger.setAttribute('aria-label','Abrir menú'); };
+burger.addEventListener('click',()=>{ const o=top.classList.toggle('open'); burger.setAttribute('aria-expanded',String(o)); burger.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú'); });
+
+/* ---------- Revelado ---------- */
+let io=null;
+function reveal(){ const items=$$('.rv:not(.in)'); if(reduce||!('IntersectionObserver' in window)){ items.forEach(x=>x.classList.add('in')); return; }
+  if(!io) io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+  items.forEach(x=>io.observe(x)); }
+
+/* ---------- Rutas ---------- */
+let current=null;
+function route(){
+  const parts=location.hash.replace(/^#\/?/,'').split('/'); const p=parts[0]||'', a=parts[1]||'';
+  closeMenu(); res.hidden=true;
+  const isSub=!!S[p];
+  if(isSub){ if(current!==p){ renderSubject(p); current=p; } $('#home').hidden=true; $('#subject').hidden=false; document.title=S[p].n+' · '+(CONTENIDO.proyecto.titulo||'Dunas del Saber'); }
+  else { current=null; $('#subject').hidden=true; $('#subject').innerHTML=''; $('#home').hidden=false; document.title=CONTENIDO.proyecto.titulo||'Dunas del Saber'; }
+  $$('#navlinks a').forEach(x=>{ if(x.dataset.r===(isSub?p:'')) x.setAttribute('aria-current','page'); else x.removeAttribute('aria-current'); });
+  reveal();
+  requestAnimationFrame(()=>{
+    const target = a ? document.getElementById(isSub?`t-${p}-${a}`:a) : null;
+    if(target){ target.classList.add('in'); target.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}); }
+    else window.scrollTo(0,0);
+  });
+}
+buildHome();
+window.addEventListener('hashchange',route);
+route();
+})();
+</script>
+</body>
+</html>
